@@ -1,0 +1,7 @@
+<section class="content">
+    <section *ngFor="let user of users">
+        <nz-card class="content__card" nzTitle="Post {{ user.name }}">        
+            <p>{{ user.email }}</p>
+        </nz-card>
+    </section>
+</section>

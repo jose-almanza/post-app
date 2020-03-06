@@ -16,6 +16,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { PostModule } from './post/post.module';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { PostPageComponent } from './post/containers/post-page/post-page.component';
+import { UserComponent } from './user/components/user.component';
+import { UserPageComponent } from './user/containers/user-page/user-page.component'
+import { userReducer } from './user/store/user.reducer';
+import { UserEffects } from './user/store/user.effects';
 
 registerLocaleData(en);
 
@@ -23,12 +27,14 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     PostComponent,
-    PostPageComponent
+    PostPageComponent,
+    UserComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ posts: postReducer}),
-    EffectsModule.forRoot([PostEffects]),
+    StoreModule.forRoot({ posts: postReducer, users: userReducer}),
+    EffectsModule.forRoot([PostEffects, UserEffects]),
     StoreDevtoolsModule.instrument({}),
     PostModule,
     NgZorroAntdModule,
